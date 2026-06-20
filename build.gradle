@@ -1,0 +1,86 @@
+plugins {
+    id("java")
+    id 'org.springframework.boot' version '3.2.5'
+    id("io.spring.dependency-management") version "1.1.4"
+}
+
+group = 'ru.muwa'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+
+    // SPRING WEB
+    implementation("org.springframework.boot:spring-boot-starter-web:3.2.5")
+
+    // SPRING SECURITY
+    implementation("org.springframework.boot:spring-boot-starter-security:3.2.5")
+
+    // SPRING DATA
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.2.5")
+    implementation("org.springframework.boot:spring-boot-starter-validation:3.2.5")
+
+    // CONFIGURATION PROCESSOR
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    // MAP
+    implementation("org.mapstruct:mapstruct:1.5.5.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
+
+    // JWT
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
+    // LOMBOK
+    compileOnly("org.projectlombok:lombok:1.18.38")
+    annotationProcessor("org.projectlombok:lombok:1.18.38")
+    // LOMBOK биндинг для mapstruct
+    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+
+    // PSQL
+    runtimeOnly("org.postgresql:postgresql:42.7.8")
+
+    // FLYWAY
+    implementation("org.flywaydb:flyway-core:9.22.3")
+
+    //KAFKA
+    implementation("org.springframework.kafka:spring-kafka")
+
+    // TELEGRAM
+    implementation("org.telegram:telegrambots-longpolling:7.2.1")
+    implementation("org.telegram:telegrambots-client:7.2.1")
+    implementation("org.telegram:telegrambots-meta:7.2.1")
+
+    // JACKSON
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+
+    // TEST
+
+    // JUNIT
+    // testImplementation platform('org.junit:junit-bom:5.10.0')
+    // testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // MOCKITO
+    // testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'
+
+    // STARTER
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+}
+
+bootJar{
+    archiveFileName = "jam-buddy.jar"
+}
+
+test {
+    useJUnitPlatform()
+}

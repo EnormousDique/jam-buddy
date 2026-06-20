@@ -1,0 +1,1 @@
+ALTER TABLE profiles add column telegram_username text;

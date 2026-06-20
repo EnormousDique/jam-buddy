@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  flyway:
+    enabled: true
+    schemas: profile
+    default-schema: profile
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: profile
+    show-sql: true
+
+jwt:
+  secret: ${JWT_SECRET}
+
+telegram:
+  bot:
+    token: ${BOT_TOKEN:0}
+    username: ${BOT_USERNAME:jam_buddy_bot}
+
+
+
+
+
